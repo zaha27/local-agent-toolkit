@@ -1,0 +1,13 @@
+# Python / UV
+__pycache__/
+.venv/
+.uv/
+
+# Logs & Temp
+*.log
+.aider*
+!.aider.instructions.md
+!.aider.conf.yml
+
+# OS files
+.DS_Store
