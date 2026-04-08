@@ -1,4 +1,5 @@
 # local ai arch config
+ 
 
 minimalist setup for local coding agents on my linux arch
 
