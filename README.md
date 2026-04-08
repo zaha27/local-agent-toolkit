@@ -11,4 +11,3 @@ minimalist setup for local coding agents on my linux arch
 ```bash
 chmod +x setup-ai.sh
 ./setup-ai.sh
-
