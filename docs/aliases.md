@@ -1,4 +1,4 @@
-# Shell Aliases
+#Shell Aliases
 
 Add these to your `~/.bashrc` or `~/.zshrc`:
 

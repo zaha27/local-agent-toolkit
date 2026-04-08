@@ -1,14 +1,14 @@
 # local ai arch config
- 
 
-minimalist setup for local coding agents on my linux arch
+Minimalist setup for local coding agents on my Linux Arch system using Ollama CUDA.
 
-## stack
-- **engine:** `ollama-cuda`
-- **models:** `qwen2.5-coder:7b`, `deepseek-coder-v2:16b`
-- **agents:** `aider`, `continue.dev`
+## Stack
+- **Engine:** `ollama-cuda`
+- **Models:** `qwen2.5-coder:7b`, `deepseek-coder-v2:16b`
+- **Agents:** `aider`, `continue.dev`
 
-## setup
+## Setup
 ```bash
 chmod +x setup-ai.sh
 ./setup-ai.sh
+```

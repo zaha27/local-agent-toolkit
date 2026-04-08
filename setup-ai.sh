@@ -4,23 +4,51 @@ set -e
 
 echo "--arch ai setup--"
 
-echo "install dependencies..."
-sudo pacman -S --needed --noconfirm \
-	base-devel \
-	gcc-fortran \
-	openblas \
-	uv \
-	python-pipx \
-	nvidia-utils
+# Ask the user which environment they are using
+read -r -p "Which environment are you on? [Arch/Debian]: " env
 
+if [[ "$env" == "Arch" ]]; then
+    echo "install dependencies..."
+    sudo pacman -S --needed --noconfirm \
+        base-devel \
+        gcc-fortran \
+        openblas \
+        uv \
+        python-pipx \
+        nvidia-utils
 
-#install ollama cuda from aur
-if ! command -v ollama &> /dev/null 
-then
-	echo "installing ollama-cuda"
-	yay -S --noconfirm ollama-cuda
-else 
-	echo "ollama already installed"
+    # install ollama cuda from aur
+    if ! command -v ollama &> /dev/null 
+    then
+        echo "installing ollama-cuda"
+        yay -S --noconfirm ollama-cuda
+    else 
+        echo "ollama already installed"
+    fi
+
+elif [[ "$env" == "Debian" ]]; then
+    echo "install dependencies..."
+    sudo apt-get update
+    sudo apt-get install -y \
+        build-essential \
+        gfortran \
+        libopenblas-dev \
+        uv \
+        python3-pipx \
+        nvidia-utils-470
+
+    # install ollama cuda from deb package
+    if ! command -v ollama &> /dev/null 
+    then
+        echo "installing ollama-cuda"
+        sudo apt-get install -y ollama-cuda
+    else 
+        echo "ollama already installed"
+    fi
+
+else
+    echo "Unsupported environment. Please choose either Arch or Debian."
+    exit 1
 fi
 
 #enable and start services
@@ -39,7 +67,6 @@ uv tool install aider-chat --python 3.12  --force
 
 export PATH="$HOME/.local/bin:$PATH"
 echo "aider managed by uv"
-
 
 echo "--setup complete--"
 
