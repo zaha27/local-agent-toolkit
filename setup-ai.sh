@@ -53,11 +53,11 @@ response=${response:-Y}
 
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo "Applying alias..."
-    if [ -f "docs/aider-model-alias.sh" ]; then
+    if [ -f "scripts/aider-model-alias.sh" ]; then
         chmod +x scripts/aider-model-alias.sh
         ./scripts/aider-model-alias.sh
     else
-        echo "Error: docs/aider-model-alias.sh not found!"
+        echo "Error: scripts/aider-model-alias.sh not found!"
     fi
 else
     echo "Skipped alias configuration."
